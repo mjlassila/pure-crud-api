@@ -23,7 +23,7 @@ def configured(monkeypatch):
         return calls
     return install
 
-@pytest.mark.parametrize('resource', ['persons','organizations','research-outputs'])
+@pytest.mark.parametrize('resource', ['persons','organizations','research-outputs','fingerprints','concepts'])
 @pytest.mark.parametrize('action', ['list','get','search'])
 def test_cli_workflows(configured, record, tmp_path, resource, action):
     row = record(resource)
@@ -106,3 +106,41 @@ def test_cli_all_pages(configured,record):
     assert result.exit_code == 0
     assert json.loads(result.stdout) == {'items':[record('persons')]}
     assert [r.url.params['offset'] for r in calls] == ['0','1']
+
+def test_cli_person_fingerprints(configured, record):
+    payload = {'items':[record('fingerprints')], 'count':1}
+    calls = configured(lambda r: httpx.Response(200,json=payload))
+    result = runner.invoke(app,['persons','fingerprints',UUID])
+    assert result.exit_code == 0, result.output
+    assert json.loads(result.stdout) == payload and result.stderr == ''
+    assert len(calls) == 1
+    assert (calls[0].method,calls[0].url.path) == ('GET',f'/ws/api/persons/{UUID}/fingerprints')
+    assert not calls[0].url.query
+
+@pytest.mark.parametrize('status', [403,404])
+def test_cli_person_fingerprints_http_errors(configured,status):
+    configured(lambda r: httpx.Response(status,json={'title':'Fingerprints unavailable'}))
+    result = runner.invoke(app,['persons','fingerprints',UUID])
+    assert result.exit_code == 5 and result.stdout == ''
+    assert f'HTTP {status}' in result.stderr
+
+def test_cli_person_fingerprints_invalid_uuid(configured):
+    configured(lambda r: pytest.fail('Invalid UUID must not be sent'))
+    result = runner.invoke(app,['persons','fingerprints','invalid'])
+    assert result.exit_code == 3 and result.stdout == ''
+    assert 'UUID' in result.stderr
+
+@pytest.mark.parametrize('args', [['fingerprints','list','--order','name'], ['persons','fingerprints',UUID,'--size','10'], ['persons','fingerprints',UUID,'--all']])
+def test_cli_does_not_offer_undefined_parameters(configured,args):
+    configured(lambda r: pytest.fail('Unsupported options must not make requests'))
+    result = runner.invoke(app,args)
+    assert result.exit_code == 2 and result.stdout == ''
+
+def test_new_commands_help_without_configuration(monkeypatch):
+    monkeypatch.delenv('PURE_API_BASE_URL',raising=False)
+    monkeypatch.delenv('PURE_API_KEY',raising=False)
+    for args in [['fingerprints','--help'],['concepts','--help'],['persons','fingerprints','--help']]:
+        result = runner.invoke(app,args)
+        assert result.exit_code == 0 and 'Usage' in result.stdout
+    result = runner.invoke(app,['fingerprints','list','--help'])
+    assert '--order' not in result.stdout
