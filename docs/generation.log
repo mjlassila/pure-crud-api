@@ -1,0 +1,235 @@
+Generating <generated-sdk>
+
+Warning(s) encountered while generating. Client was generated, but some pieces may be missing
+WARNING parsing PUT /activities/file-uploads within activity. Endpoint will not be generated.
+
+Unsupported content type */*
+
+
+WARNING parsing GET /activities/{uuid}/files/{fileId} within activity.
+
+Cannot parse response for status code 200 (Unsupported content_type {'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}), response will be omitted from generated client
+
+Response(description='Successful operation', headers=None, content={'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}, links=None)
+
+WARNING parsing PUT /applications/file-uploads within application. Endpoint will not be generated.
+
+Unsupported content type */*
+
+
+WARNING parsing GET /applications/{uuid}/files/{fileId} within application.
+
+Cannot parse response for status code 200 (Unsupported content_type {'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}), response will be omitted from generated client
+
+Response(description='Successful operation', headers=None, content={'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}, links=None)
+
+WARNING parsing PUT /awards/file-uploads within award. Endpoint will not be generated.
+
+Unsupported content type */*
+
+
+WARNING parsing GET /awards/{uuid}/files/{fileId} within award.
+
+Cannot parse response for status code 200 (Unsupported content_type {'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}), response will be omitted from generated client
+
+Response(description='Successful operation', headers=None, content={'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}, links=None)
+
+WARNING parsing PUT /contracts/file-uploads within contract. Endpoint will not be generated.
+
+Unsupported content type */*
+
+
+WARNING parsing GET /contracts/{uuid}/files/{fileId} within contract.
+
+Cannot parse response for status code 200 (Unsupported content_type {'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}), response will be omitted from generated client
+
+Response(description='Successful operation', headers=None, content={'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}, links=None)
+
+WARNING parsing PUT /courses/file-uploads within course. Endpoint will not be generated.
+
+Unsupported content type */*
+
+
+WARNING parsing GET /courses/{uuid}/files/{fileId} within course.
+
+Cannot parse response for status code 200 (Unsupported content_type {'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}), response will be omitted from generated client
+
+Response(description='Successful operation', headers=None, content={'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}, links=None)
+
+WARNING parsing PUT /data-sets/file-uploads within data_set. Endpoint will not be generated.
+
+Unsupported content type */*
+
+
+WARNING parsing GET /data-sets/{uuid}/files/{fileId} within data_set.
+
+Cannot parse response for status code 200 (Unsupported content_type {'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}), response will be omitted from generated client
+
+Response(description='Successful operation', headers=None, content={'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}, links=None)
+
+WARNING parsing PUT /equipment/file-uploads within equipment. Endpoint will not be generated.
+
+Unsupported content type */*
+
+
+WARNING parsing GET /equipment/{uuid}/files/{fileId} within equipment.
+
+Cannot parse response for status code 200 (Unsupported content_type {'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}), response will be omitted from generated client
+
+Response(description='Successful operation', headers=None, content={'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}, links=None)
+
+WARNING parsing PUT /ethical-reviews/file-uploads within ethical_review. Endpoint will not be generated.
+
+Unsupported content type */*
+
+
+WARNING parsing GET /ethical-reviews/{uuid}/files/{fileId} within ethical_review.
+
+Cannot parse response for status code 200 (Unsupported content_type {'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}), response will be omitted from generated client
+
+Response(description='Successful operation', headers=None, content={'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}, links=None)
+
+WARNING parsing PUT /external-organizations/file-uploads within external_organization. Endpoint will not be generated.
+
+Unsupported content type */*
+
+
+WARNING parsing GET /external-organizations/{uuid}/files/{fileId} within external_organization.
+
+Cannot parse response for status code 200 (Unsupported content_type {'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}), response will be omitted from generated client
+
+Response(description='Successful operation', headers=None, content={'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}, links=None)
+
+WARNING parsing PUT /external-persons/file-uploads within external_person. Endpoint will not be generated.
+
+Unsupported content type */*
+
+
+WARNING parsing GET /external-persons/{uuid}/files/{fileId} within external_person.
+
+Cannot parse response for status code 200 (Unsupported content_type {'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}), response will be omitted from generated client
+
+Response(description='Successful operation', headers=None, content={'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}, links=None)
+
+WARNING parsing PUT /funding-opportunities/file-uploads within funding_opportunity. Endpoint will not be generated.
+
+Unsupported content type */*
+
+
+WARNING parsing GET /funding-opportunities/{uuid}/files/{fileId} within funding_opportunity.
+
+Cannot parse response for status code 200 (Unsupported content_type {'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}), response will be omitted from generated client
+
+Response(description='Successful operation', headers=None, content={'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}, links=None)
+
+WARNING parsing PUT /impacts/file-uploads within impact. Endpoint will not be generated.
+
+Unsupported content type */*
+
+
+WARNING parsing GET /impacts/{uuid}/files/{fileId} within impact.
+
+Cannot parse response for status code 200 (Unsupported content_type {'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}), response will be omitted from generated client
+
+Response(description='Successful operation', headers=None, content={'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}, links=None)
+
+WARNING parsing PUT /milestones/file-uploads within milestone. Endpoint will not be generated.
+
+Unsupported content type */*
+
+
+WARNING parsing GET /milestones/{uuid}/files/{fileId} within milestone.
+
+Cannot parse response for status code 200 (Unsupported content_type {'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}), response will be omitted from generated client
+
+Response(description='Successful operation', headers=None, content={'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}, links=None)
+
+WARNING parsing PUT /organizations/file-uploads within organization. Endpoint will not be generated.
+
+Unsupported content type */*
+
+
+WARNING parsing GET /organizations/{uuid}/files/{fileId} within organization.
+
+Cannot parse response for status code 200 (Unsupported content_type {'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}), response will be omitted from generated client
+
+Response(description='Successful operation', headers=None, content={'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}, links=None)
+
+WARNING parsing PUT /persons/file-uploads within person. Endpoint will not be generated.
+
+Unsupported content type */*
+
+
+WARNING parsing GET /persons/{uuid}/files/{fileId} within person.
+
+Cannot parse response for status code 200 (Unsupported content_type {'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}), response will be omitted from generated client
+
+Response(description='Successful operation', headers=None, content={'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}, links=None)
+
+WARNING parsing PUT /pressmedia/file-uploads within press_media. Endpoint will not be generated.
+
+Unsupported content type */*
+
+
+WARNING parsing GET /pressmedia/{uuid}/files/{fileId} within press_media.
+
+Cannot parse response for status code 200 (Unsupported content_type {'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}), response will be omitted from generated client
+
+Response(description='Successful operation', headers=None, content={'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}, links=None)
+
+WARNING parsing PUT /prizes/file-uploads within prize. Endpoint will not be generated.
+
+Unsupported content type */*
+
+
+WARNING parsing GET /prizes/{uuid}/files/{fileId} within prize.
+
+Cannot parse response for status code 200 (Unsupported content_type {'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}), response will be omitted from generated client
+
+Response(description='Successful operation', headers=None, content={'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}, links=None)
+
+WARNING parsing PUT /projects/file-uploads within project. Endpoint will not be generated.
+
+Unsupported content type */*
+
+
+WARNING parsing GET /projects/{uuid}/files/{fileId} within project.
+
+Cannot parse response for status code 200 (Unsupported content_type {'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}), response will be omitted from generated client
+
+Response(description='Successful operation', headers=None, content={'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}, links=None)
+
+WARNING parsing PUT /research-outputs/file-uploads within research_output. Endpoint will not be generated.
+
+Unsupported content type */*
+
+
+WARNING parsing GET /research-outputs/{uuid}/files/{fileId} within research_output.
+
+Cannot parse response for status code 200 (Unsupported content_type {'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}), response will be omitted from generated client
+
+Response(description='Successful operation', headers=None, content={'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}, links=None)
+
+WARNING parsing PUT /student-projects/file-uploads within student_project. Endpoint will not be generated.
+
+Unsupported content type */*
+
+
+WARNING parsing GET /student-projects/{uuid}/files/{fileId} within student_project.
+
+Cannot parse response for status code 200 (Unsupported content_type {'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}), response will be omitted from generated client
+
+Response(description='Successful operation', headers=None, content={'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}, links=None)
+
+WARNING parsing PUT /student-theses/file-uploads within student_thesis. Endpoint will not be generated.
+
+Unsupported content type */*
+
+
+WARNING parsing GET /student-theses/{uuid}/files/{fileId} within student_thesis.
+
+Cannot parse response for status code 200 (Unsupported content_type {'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}), response will be omitted from generated client
+
+Response(description='Successful operation', headers=None, content={'*/*': MediaType(media_type_schema=Schema(title=None, multipleOf=None, maximum=None, exclusiveMaximum=None, minimum=None, exclusiveMinimum=None, maxLength=None, minLength=None, pattern=None, maxItems=None, minItems=None, uniqueItems=None, maxProperties=None, minProperties=None, required=None, enum=None, const=None, type=<DataType.STRING: 'string'>, allOf=[], oneOf=[], anyOf=[], schema_not=None, items=None, prefixItems=[], properties=None, additionalProperties=None, description=None, schema_format='binary', default=None, nullable=False, discriminator=None, readOnly=None, writeOnly=None, xml=None, externalDocs=None, example=None, deprecated=None), example=None, examples=None, encoding=None)}, links=None)
+
+If you believe this was a mistake or this tool is missing a feature you need, please open an issue at https://github.com/openapi-generators/openapi-python-client/issues/new/choose

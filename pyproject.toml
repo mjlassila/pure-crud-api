@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools==80.9.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pure-client"
+version = "0.1.0"
+description = "Generated Elsevier Pure 5.36.3 SDK and read-only CLI"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "httpx==0.28.1", "attrs==26.1.0", "python-dateutil==2.9.0.post0",
+  "typer==0.20.1", "jsonschema==4.25.1",
+]
+
+[project.scripts]
+pure = "pure_client.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+pure_client = ["schemas.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "."]
