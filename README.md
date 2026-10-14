@@ -1,8 +1,11 @@
 # Pure API CRUD client
 
-An installable Python client and read-only Typer CLI for Elsevier Pure API. The original specification defines the server path `/ws/api` and the `api-key` authentication header. Supply the full API URL; the client does not add a version segment.
+An installable Python client and read-only CLI utility for Elsevier Pure API.
 
 Python 3.12 or newer is required.
+
+| :exclamation:  Please note that the code in this repository is machine-generated and has not been fully reviewed by a human. Use it at your own risk! As a safety measure, only use API keys with read-only permissions, and make sure to restrict access to just the data you actually need using Pure API Access definitions. |
+|----------------------------------------------|
 
 ## Install and configure
 
