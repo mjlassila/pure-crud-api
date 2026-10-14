@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 from typing import Annotated
 import typer
-from .client import PureClient, RESOURCES, ORDERED_RESOURCES, load_query
+from .client import PureClient, RESOURCES, ORDERED_RESOURCES, load_query, load_person_uuids
 from .config import Settings
 from .errors import PureError
 
@@ -18,6 +18,13 @@ def configure(ctx: typer.Context, base_url: Annotated[str | None, typer.Option('
 def run(ctx, resource, action, **kwargs):
     try:
         settings = Settings.from_env(**ctx.obj)
+        if action == 'person_fingerprints':
+            uuid_file = kwargs.pop('uuid_file', None)
+            if (kwargs.get('uuid') is None) == (uuid_file is None):
+                raise PureError('Provide either a person UUID or --file, but not both.', 3)
+            if uuid_file is not None:
+                action = 'persons_fingerprints'
+                kwargs = {'uuids': load_person_uuids(uuid_file)}
         if action == 'search':
             kwargs['body'] = load_query(kwargs.pop('query_file'))
         with PureClient(settings) as client:
@@ -47,8 +54,8 @@ def commands(resource):
 
     if resource == 'persons':
         @group.command('fingerprints')
-        def person_fingerprints(ctx: typer.Context, uuid: Annotated[str, typer.Argument(help='Person UUID whose fingerprints will be returned.')]):
-            run(ctx, None, 'person_fingerprints', uuid=uuid)
+        def person_fingerprints(ctx: typer.Context, uuid: Annotated[str | None, typer.Argument(help='Person UUID; use this or --file.')] = None, uuid_file: Annotated[Path | None, typer.Option('--file', help='UTF-8 file with one person UUID per line or a JSON array of UUID strings.')] = None):
+            run(ctx, None, 'person_fingerprints', uuid=uuid, uuid_file=uuid_file)
 
     @group.command('get')
     def get_record(ctx: typer.Context, uuid: Annotated[str, typer.Argument(help='Record UUID as defined by the API.')]):

@@ -43,6 +43,7 @@ pure concepts list --size 100
 pure concepts get 11111111-1111-4111-8111-111111111111
 pure concepts search query.json --all
 pure persons fingerprints 11111111-1111-4111-8111-111111111111
+pure persons fingerprints --file person-uuids.txt > fingerprints.json
 pure --base-url https://pure.example.edu/ws/api --timeout 60 persons list
 ```
 
@@ -58,7 +59,27 @@ Search uses the corresponding POST `/persons/search`, `/research-outputs/search`
 
 List sends only the documented `size` and `offset` query parameters, plus optional `order` for persons, research outputs, organizations, and concepts. Fingerprint list commands do not expose or send `order`. The list schema limits `size` to 1000; the search schemas do not specify that maximum. The client additionally requires positive sizes and nonnegative offsets to make pagination useful. `--size` and `--offset` on search override values in the JSON body. `order` and `orderBy` examples are illustrative: use instance-supported ordering values. The YAML does not define a concepts ordering-discovery endpoint.
 
-`pure persons fingerprints PERSON_UUID` calls the exact GET `/persons/{uuid}/fingerprints` endpoint and returns its `FingerprintListResult` JSON unchanged, including ranked concepts. This operation has no pagination parameters in the YAML, so the command offers neither `--size`, `--offset`, nor `--all`. A person UUID is required; API 403 and 404 responses produce HTTP diagnostics and exit code 5.
+`pure persons fingerprints PERSON_UUID` calls the exact GET `/persons/{uuid}/fingerprints` endpoint and returns its `FingerprintListResult` JSON unchanged, including ranked concepts. This operation has no pagination parameters in the YAML, so the command offers neither `--size`, `--offset`, nor `--all`. Provide either a positional person UUID or `--file`; API 403 and 404 responses produce HTTP diagnostics and exit code 5.
+
+Use `pure persons fingerprints --file person-uuids.txt` to read multiple people. The UTF-8 file can contain one UUID per line (blank lines and surrounding whitespace are ignored):
+
+```text
+11111111-1111-4111-8111-111111111111
+22222222-2222-4222-8222-222222222222
+```
+
+Alternatively, provide a JSON array of UUID strings. All entries are validated before making any requests. Empty files/lists, malformed JSON arrays, invalid UUIDs, and unreadable files fail with exit code 3. Duplicate UUIDs, including equivalent case or hyphen variations, are normalized and requested once.
+
+File input emits **one JSON object keyed by canonical person UUID**, whether the file contains one person or multiple people. Each value is the unchanged API fingerprint response, including any ranked concepts:
+
+```json
+{
+  "11111111-1111-4111-8111-111111111111": {"items": [], "count": 0},
+  "22222222-2222-4222-8222-222222222222": {"items": [], "count": 0}
+}
+```
+
+The positional single-UUID command retains its existing `FingerprintListResult` output. File input makes a separate generated GET request for each distinct person, sequentially; it does not introduce a bulk API endpoint. Results are collected before writing stdout, so a failed request emits no partial or concatenated JSON. Errors identify the failing person UUID on stderr and retain the existing HTTP/network/response exit codes. The batch does not retry or continue after a failure.
 
 For a paginated fingerprint search filtered by related person content, `fingerprint-query.json` can contain the documented query fields:
 
@@ -82,7 +103,7 @@ Successful data commands print a single JSON value to stdout. Diagnostics go to 
 ## Python
 
 ```python
-from pure_client import PureClient, PureError
+from pure_client import PureClient, PureError, load_person_uuids
 
 with PureClient.from_env(timeout=30) as pure:
     first_page = pure.list("persons", size=20)
@@ -90,6 +111,7 @@ with PureClient.from_env(timeout=30) as pure:
     matches = pure.search("persons", {"searchString": "Ada"}, all_pages=True)
     fingerprints = pure.person_fingerprints("11111111-1111-4111-8111-111111111111")
     concepts = pure.list("concepts", size=20)
+    by_person = pure.persons_fingerprints(load_person_uuids("person-uuids.txt"))
 ```
 
 Alternatively, use `PureClient(Settings(base_url=..., api_key=..., timeout=...))` when credentials come from a secret provider. `Settings.from_env` and `PureClient.from_env` accept an optional `base_url` override and an `environ` mapping. Keys are hidden in the public client and settings representations.
