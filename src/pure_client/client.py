@@ -142,6 +142,17 @@ class PureClient:
         operation = import_module('.sdk.api.person.person_get_fingerprints', package='pure_client')
         return self._data(operation, 'FingerprintListResult', uuid=self._uuid(uuid))
 
+    def persons_fingerprints(self, uuids):
+        """Return fingerprints keyed by person UUID, validating the whole batch first."""
+        identifiers = _person_uuids(uuids)
+        results = {}
+        for uuid in identifiers:
+            try:
+                results[uuid] = self.person_fingerprints(uuid)
+            except PureError as error:
+                raise PureError(f'Person {uuid}: {error}', error.code) from None
+        return results
+
     def list(self, resource: str, *, size=10, offset=0, order=None, all_pages=False):
         operation = self._operation(resource, 'list')
         self._paging(size, offset, list_request=True)
@@ -231,3 +242,37 @@ def load_query(path: Path | str):
     if not isinstance(data, dict):
         raise PureError('Query file must contain a JSON object.', 3)
     return data
+
+
+def _person_uuids(values):
+    if not isinstance(values, (list, tuple)) or not values:
+        raise PureError('Provide a nonempty list of person UUIDs.', 3)
+    identifiers = []
+    seen = set()
+    for index, value in enumerate(values, start=1):
+        if not isinstance(value, (str, UUID)):
+            raise PureError(f'Person UUID entry {index} must be a UUID string.', 3)
+        try:
+            identifier = str(PureClient._uuid(value.strip() if isinstance(value, str) else value))
+        except PureError:
+            raise PureError(f'Person UUID entry {index} is invalid; use a valid UUID.', 3) from None
+        if identifier not in seen:
+            seen.add(identifier)
+            identifiers.append(identifier)
+    return identifiers
+
+
+def load_person_uuids(path: Path | str):
+    """Read a UTF-8 UUID list: one per line, or a JSON array of UUID strings."""
+    try:
+        text = Path(path).read_text(encoding='utf-8-sig').strip()
+    except (OSError, UnicodeError):
+        raise PureError('Cannot read UUID file; check the path, permissions, and UTF-8 encoding.', 3) from None
+    if text.startswith('['):
+        try:
+            values = json.loads(text)
+        except ValueError:
+            raise PureError('UUID file must contain a valid JSON array of UUID strings.', 3) from None
+    else:
+        values = [line.strip() for line in text.splitlines() if line.strip()]
+    return _person_uuids(values)

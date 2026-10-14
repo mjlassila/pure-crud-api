@@ -41,3 +41,16 @@ Implemented against the latest checked-out `main` branch on 2026-10-14, using th
 - `git diff --check` passed. Generated SDK files and the original YAML were unchanged.
 
 No live Pure API validation was performed for this extension.
+
+## Person UUID file input
+
+Implemented on the latest checked-out `main` branch on 2026-10-14.
+
+- `pytest -q`: **157 passed**, with the same two upstream Typer/Click deprecation warnings.
+- Mocked tests verify newline-separated and JSON-array UUID files with one or multiple people, exact generated GET requests, one valid JSON object on stdout, and preservation of the positional single-person output.
+- Tests cover duplicate UUID normalization, blank lines, UTF-8 BOMs, unreadable/invalid files, full input validation before HTTP, mutually exclusive inputs, and absence of partial stdout when a later lookup fails (HTTP, timeout, or malformed response).
+- `python -m build --wheel --no-isolation`: wheel built successfully.
+- Reinstalled the updated wheel into the isolated smoke environment. Installed `pure persons fingerprints --help` includes `--file`; an installed mocked CLI invocation produced the expected parseable UUID-keyed JSON object.
+- `git diff --check` passed. The original YAML and generated SDK were unchanged.
+
+No live Pure API validation was performed. File input performs sequential existing person-fingerprint GET operations; there is no new bulk API endpoint.

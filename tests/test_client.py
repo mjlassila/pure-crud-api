@@ -234,3 +234,62 @@ def test_new_search_schemas_validate_before_http(client_factory,resource,body):
     with pytest.raises(PureError) as error:
         client_factory(lambda r: pytest.fail('Invalid input must not be sent')).search(resource,body)
     assert error.value.code == 3
+
+@pytest.mark.parametrize('file_type', ['lines', 'json'])
+@pytest.mark.parametrize('count', [1, 2])
+def test_load_person_uuid_file_and_batch(client_factory, record, tmp_path, file_type, count):
+    from pure_client import load_person_uuids
+    identifiers = [UUID, '22222222-2222-4222-8222-222222222222'][:count]
+    path = tmp_path/'persons.txt'
+    path.write_text(json.dumps(identifiers) if file_type == 'json' else '\n'.join(identifiers)+'\n')
+    calls = []
+    def handle(request):
+        calls.append(request)
+        assert request.method == 'GET'
+        assert not request.url.query and not request.content
+        assert request.headers['api-key'] == 'private-test-key'
+        return httpx.Response(200,json={'items':[record('fingerprints')],'count':1})
+    result = client_factory(handle).persons_fingerprints(load_person_uuids(path))
+    assert list(result) == identifiers
+    assert [r.url.path for r in calls] == [f'/ws/api/persons/{uuid}/fingerprints' for uuid in identifiers]
+    assert all(value == {'items':[record('fingerprints')],'count':1} for value in result.values())
+
+@pytest.mark.parametrize('text', ['', ' \n\n ', '[]', '[', '[null]', '[1]', '[true]', '{}', 'not-a-uuid', UUID+'\ninvalid', '["'+UUID+'", "invalid"]'])
+def test_bad_person_uuid_file(tmp_path,text):
+    from pure_client import load_person_uuids
+    path = tmp_path/'persons.txt'
+    path.write_text(text)
+    with pytest.raises(PureError) as error:
+        load_person_uuids(path)
+    assert error.value.code == 3
+
+def test_person_uuid_file_missing_and_invalid_encoding(tmp_path):
+    from pure_client import load_person_uuids
+    with pytest.raises(PureError,match='Cannot read UUID file'):
+        load_person_uuids(tmp_path/'missing')
+    path = tmp_path/'invalid.txt'
+    path.write_bytes(b'\xff\xfe')
+    with pytest.raises(PureError,match='UTF-8'):
+        load_person_uuids(path)
+
+def test_person_uuid_file_bom_whitespace_and_duplicate_normalization(tmp_path):
+    from pure_client import load_person_uuids
+    identifier = 'aabbccdd-1111-4111-8111-111111111111'
+    path = tmp_path/'persons.txt'
+    path.write_text('  '+identifier.upper()+'\r\n\r\n'+identifier.replace('-','')+'\n', encoding='utf-8-sig')
+    assert load_person_uuids(path) == [identifier]
+
+@pytest.mark.parametrize('uuids', [[UUID,'invalid'], [], UUID, [UUID, 5]])
+def test_person_batch_validates_all_before_http(client_factory,uuids):
+    with pytest.raises(PureError) as error:
+        client_factory(lambda r: pytest.fail('No request before full validation')).persons_fingerprints(uuids)
+    assert error.value.code == 3
+
+def test_person_batch_deduplicates_requests(client_factory):
+    calls = []
+    def handle(request):
+        calls.append(request)
+        return httpx.Response(200,json={'items':[]})
+    result = client_factory(handle).persons_fingerprints([UUID, UUID.replace('-',''), UUID])
+    assert result == {UUID:{'items':[]}}
+    assert len(calls) == 1
