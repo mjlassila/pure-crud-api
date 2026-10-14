@@ -1,0 +1,186 @@
+from __future__ import annotations
+
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, Self, TypeVar, cast
+
+from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.organization_ref_type_0 import OrganizationRefType0
+    from ..models.system_currency_amount import SystemCurrencyAmount
+
+
+T = TypeVar("T", bound="AwardInternalFinancialFundingCollaboratorAssociation")
+
+
+@_attrs_define
+class AwardInternalFinancialFundingCollaboratorAssociation:
+    """An internal collaborator for a financial funding.
+
+    Attributes:
+        type_discriminator (str):
+        collaborator (None | OrganizationRefType0): A reference to an organization in the institution
+        pure_id (int | Unset): Pure database ID of the object, prefer using the UUID if it is present on the entity
+        institutional_part (SystemCurrencyAmount | Unset): A monetary value in the Pure installation's system currency
+            as defined by the W3C's Payment Request standard: https://www.w3.org/TR/payment-request/#paymentcurrencyamount-
+            dictionary
+        institutional_contribution (SystemCurrencyAmount | Unset): A monetary value in the Pure installation's system
+            currency as defined by the W3C's Payment Request standard: https://www.w3.org/TR/payment-
+            request/#paymentcurrencyamount-dictionary
+        institutional_fec (SystemCurrencyAmount | Unset): A monetary value in the Pure installation's system currency as
+            defined by the W3C's Payment Request standard: https://www.w3.org/TR/payment-request/#paymentcurrencyamount-
+            dictionary
+        fec_percentage (float | None | Unset): Full Economic Costing (fEC) percentage of the funding.
+    """
+
+    type_discriminator: str
+    collaborator: None | OrganizationRefType0
+    pure_id: int | Unset = UNSET
+    institutional_part: SystemCurrencyAmount | Unset = UNSET
+    institutional_contribution: SystemCurrencyAmount | Unset = UNSET
+    institutional_fec: SystemCurrencyAmount | Unset = UNSET
+    fec_percentage: float | None | Unset = UNSET
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+
+    def to_dict(self) -> dict[str, Any]:
+        from ..models.organization_ref_type_0 import OrganizationRefType0
+
+        type_discriminator = self.type_discriminator
+
+        collaborator: dict[str, Any] | None
+        if isinstance(self.collaborator, OrganizationRefType0):
+            collaborator = self.collaborator.to_dict()
+        else:
+            collaborator = self.collaborator
+
+        pure_id = self.pure_id
+
+        institutional_part: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.institutional_part, Unset):
+            institutional_part = self.institutional_part.to_dict()
+
+        institutional_contribution: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.institutional_contribution, Unset):
+            institutional_contribution = self.institutional_contribution.to_dict()
+
+        institutional_fec: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.institutional_fec, Unset):
+            institutional_fec = self.institutional_fec.to_dict()
+
+        fec_percentage: float | None | Unset
+        if isinstance(self.fec_percentage, Unset):
+            fec_percentage = UNSET
+        else:
+            fec_percentage = self.fec_percentage
+
+        field_dict: dict[str, Any] = {}
+        field_dict.update(self.additional_properties)
+        field_dict.update(
+            {
+                "typeDiscriminator": type_discriminator,
+                "collaborator": collaborator,
+            }
+        )
+        if pure_id is not UNSET:
+            field_dict["pureId"] = pure_id
+        if institutional_part is not UNSET:
+            field_dict["institutionalPart"] = institutional_part
+        if institutional_contribution is not UNSET:
+            field_dict["institutionalContribution"] = institutional_contribution
+        if institutional_fec is not UNSET:
+            field_dict["institutionalFEC"] = institutional_fec
+        if fec_percentage is not UNSET:
+            field_dict["fecPercentage"] = fec_percentage
+
+        return field_dict
+
+    @classmethod
+    def from_dict(cls, src_dict: Mapping[str, Any]) -> Self:
+        from ..models.organization_ref_type_0 import OrganizationRefType0
+        from ..models.system_currency_amount import SystemCurrencyAmount
+
+        d = dict(src_dict)
+        type_discriminator = d.pop("typeDiscriminator")
+
+        def _parse_collaborator(data: object) -> None | OrganizationRefType0:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                componentsschemas_organization_ref_type_0 = (
+                    OrganizationRefType0.from_dict(data)
+                )
+
+                return componentsschemas_organization_ref_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(None | OrganizationRefType0, data)
+
+        collaborator = _parse_collaborator(d.pop("collaborator"))
+
+        pure_id = d.pop("pureId", UNSET)
+
+        _institutional_part = d.pop("institutionalPart", UNSET)
+        institutional_part: SystemCurrencyAmount | Unset
+        if isinstance(_institutional_part, Unset):
+            institutional_part = UNSET
+        else:
+            institutional_part = SystemCurrencyAmount.from_dict(_institutional_part)
+
+        _institutional_contribution = d.pop("institutionalContribution", UNSET)
+        institutional_contribution: SystemCurrencyAmount | Unset
+        if isinstance(_institutional_contribution, Unset):
+            institutional_contribution = UNSET
+        else:
+            institutional_contribution = SystemCurrencyAmount.from_dict(
+                _institutional_contribution
+            )
+
+        _institutional_fec = d.pop("institutionalFEC", UNSET)
+        institutional_fec: SystemCurrencyAmount | Unset
+        if isinstance(_institutional_fec, Unset):
+            institutional_fec = UNSET
+        else:
+            institutional_fec = SystemCurrencyAmount.from_dict(_institutional_fec)
+
+        def _parse_fec_percentage(data: object) -> float | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(float | None | Unset, data)
+
+        fec_percentage = _parse_fec_percentage(d.pop("fecPercentage", UNSET))
+
+        award_internal_financial_funding_collaborator_association = cls(
+            type_discriminator=type_discriminator,
+            collaborator=collaborator,
+            pure_id=pure_id,
+            institutional_part=institutional_part,
+            institutional_contribution=institutional_contribution,
+            institutional_fec=institutional_fec,
+            fec_percentage=fec_percentage,
+        )
+
+        award_internal_financial_funding_collaborator_association.additional_properties = d
+        return award_internal_financial_funding_collaborator_association
+
+    @property
+    def additional_keys(self) -> list[str]:
+        return list(self.additional_properties.keys())
+
+    def __getitem__(self, key: str) -> Any:
+        return self.additional_properties[key]
+
+    def __setitem__(self, key: str, value: Any) -> None:
+        self.additional_properties[key] = value
+
+    def __delitem__(self, key: str) -> None:
+        del self.additional_properties[key]
+
+    def __contains__(self, key: str) -> bool:
+        return key in self.additional_properties

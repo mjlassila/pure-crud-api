@@ -1,0 +1,5 @@
+include generator.yaml requirements-dev.lock
+recursive-include spec *.yaml
+recursive-include scripts *.py
+recursive-include tests *.py
+recursive-include docs *.md *.json *.log
