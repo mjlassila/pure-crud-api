@@ -10,6 +10,10 @@ def record():
     def make(resource, uuid=UUID):
         if resource == 'persons':
             return {'uuid': uuid, 'name': {'firstName': 'Ada', 'lastName': 'Lovelace'}, 'customExtra': {'kept': True}}
+        if resource == 'fingerprints':
+            return {'uuid': uuid, 'relatedContent': {'uuid': UUID, 'systemName': 'Person'}, 'concepts': [{'concept': {'uuid': UUID, 'systemName': 'Concept'}, 'rank': 0.75, 'weightedRank': 0.6}]}
+        if resource == 'concepts':
+            return {'uuid': uuid, 'conceptId': 'C001', 'thesaurus': {'uuid': UUID, 'systemName': 'Thesaurus'}, 'name': {'en_GB': 'Artificial intelligence'}}
         if resource == 'organizations':
             return {'uuid': uuid, 'name': {'en_GB': 'Example University'}, 'lifecycle': {}, 'type': {'uri': '/organization/types/university'}}
         return {'uuid': uuid, 'title': {'value': 'Example output'}, 'type': {'uri': '/researchoutput/types/contributiontojournal/article'}, 'category': {'uri': '/researchoutput/categories/research'}, 'language': {'uri': '/languages/en'}, 'managingOrganization': {'systemName': 'Organization', 'uuid': UUID}, 'publicationStatuses': [], 'contributors': [], 'typeDiscriminator': 'ContributionToJournal'}

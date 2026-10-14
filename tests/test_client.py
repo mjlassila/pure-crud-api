@@ -5,7 +5,7 @@ import pytest
 from pure_client import PureClient, Settings, PureError, load_query
 
 UUID = '11111111-1111-4111-8111-111111111111'
-RESOURCES = ['persons', 'organizations', 'research-outputs']
+RESOURCES = ['persons', 'organizations', 'research-outputs', 'fingerprints', 'concepts']
 
 @pytest.mark.parametrize('resource', RESOURCES)
 def test_list_fetch_search_contract(client_factory, record, resource):
@@ -20,12 +20,19 @@ def test_list_fetch_search_contract(client_factory, record, resource):
             return httpx.Response(200, json=row)
         return httpx.Response(200, json={'items': [row], 'count': 1, 'pageInformation': {'offset': 0, 'size': 2}})
     client = client_factory(handle)
-    assert client.list(resource, size=2, order='name')['items'] == [row]
+    assert client.list(resource, size=2, order='name' if resource != 'fingerprints' else None)['items'] == [row]
     assert client.get(resource, UUID) == row
-    body = {'searchString': 'Ada', 'orderBy': 'name', 'uuids': [UUID], 'size': 2, 'offset': 0}
+    body = {'searchString': 'Ada', 'uuids': [UUID], 'size': 2, 'offset': 0}
+    if resource == 'fingerprints':
+        body.update(relatedContentUuid=UUID, relatedContentSystemName='Person')
+    else:
+        body['orderBy'] = 'name'
     assert client.search(resource, body)['items'] == [row]
     assert (calls[0].method, calls[0].url.path) == ('GET', '/ws/api/' + resource)
-    assert dict(calls[0].url.params) == {'size': '2', 'offset': '0', 'order': 'name'}
+    expected_params = {'size': '2', 'offset': '0'}
+    if resource != 'fingerprints':
+        expected_params['order'] = 'name'
+    assert dict(calls[0].url.params) == expected_params
     assert (calls[1].method, calls[1].url.path) == ('GET', '/ws/api/' + resource + '/' + UUID)
     assert (calls[2].method, calls[2].url.path) == ('POST', '/ws/api/' + resource + '/search')
     assert not calls[2].url.query
@@ -183,3 +190,47 @@ def test_undocumented_success_status_fails(client_factory):
     with pytest.raises(PureError) as error:
         client_factory(lambda r: httpx.Response(201,json={'items':[]})).list('persons')
     assert error.value.code == 6
+
+@pytest.mark.parametrize('empty', [False, True])
+def test_person_fingerprints_contract(client_factory, record, empty):
+    calls = []
+    rows = [] if empty else [record('fingerprints')]
+    body = {'items': rows, 'count': len(rows), 'pageInformation': {'size': 10, 'offset': 0}}
+    def handle(request):
+        calls.append(request)
+        assert request.method == 'GET'
+        assert request.url.path == f'/ws/api/persons/{UUID}/fingerprints'
+        assert not request.url.query and not request.content
+        assert request.headers['api-key'] == 'private-test-key'
+        return httpx.Response(200, json=body)
+    assert client_factory(handle).person_fingerprints(UUID) == body
+    assert len(calls) == 1
+
+@pytest.mark.parametrize('status', [403, 404])
+def test_person_fingerprints_http_failure(client_factory, status):
+    client = client_factory(lambda r: httpx.Response(status,json={'title':'Cannot read fingerprints'}))
+    with pytest.raises(PureError, match=f'HTTP {status}') as error:
+        client.person_fingerprints(UUID)
+    assert error.value.code == 5
+
+@pytest.mark.parametrize('payload', [b'not JSON', b'{"items":[{}]}', b'{"items":"invalid"}'])
+def test_person_fingerprints_malformed_response(client_factory, payload):
+    with pytest.raises(PureError) as error:
+        client_factory(lambda r: httpx.Response(200,content=payload)).person_fingerprints(UUID)
+    assert error.value.code == 6
+
+def test_person_fingerprints_invalid_uuid(client_factory):
+    with pytest.raises(PureError, match='valid UUID') as error:
+        client_factory(lambda r: pytest.fail('Invalid UUID must not be sent')).person_fingerprints('123')
+    assert error.value.code == 3
+
+def test_fingerprint_list_rejects_unsupported_order(client_factory):
+    with pytest.raises(PureError, match='does not define an order') as error:
+        client_factory(lambda r: pytest.fail('No request expected')).list('fingerprints',order='name')
+    assert error.value.code == 3
+
+@pytest.mark.parametrize('resource,body', [('fingerprints',{'relatedContentSystemName':5}),('concepts',{'orderings':'name'})])
+def test_new_search_schemas_validate_before_http(client_factory,resource,body):
+    with pytest.raises(PureError) as error:
+        client_factory(lambda r: pytest.fail('Invalid input must not be sent')).search(resource,body)
+    assert error.value.code == 3

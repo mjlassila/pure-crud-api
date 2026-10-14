@@ -16,8 +16,11 @@ RESOURCES = {
     'persons': ('person', 'PersonsQuery', 'Person'),
     'organizations': ('organization', 'OrganizationsQuery', 'Organization'),
     'research-outputs': ('research_output', 'ResearchOutputsQuery', 'ResearchOutput'),
+    'fingerprints': ('fingerprint', 'FingerprintQuery', 'Fingerprint'),
+    'concepts': ('concept', 'ConceptQuery', 'Concept'),
 }
-QUERY_MODULES = {'PersonsQuery': 'persons_query', 'OrganizationsQuery': 'organizations_query', 'ResearchOutputsQuery': 'research_outputs_query'}
+QUERY_MODULES = {'PersonsQuery': 'persons_query', 'OrganizationsQuery': 'organizations_query', 'ResearchOutputsQuery': 'research_outputs_query', 'FingerprintQuery': 'fingerprint_query', 'ConceptQuery': 'concept_query'}
+ORDERED_RESOURCES = {'persons', 'organizations', 'research-outputs', 'concepts'}
 
 class _ConfiguredSDK(Client):
     """Keep sync and async response hooks compatible without editing generated code."""
@@ -105,7 +108,7 @@ class PureClient:
 
     def _operation(self, resource, action):
         if resource not in RESOURCES:
-            raise PureError('Unknown resource; choose persons, organizations, or research-outputs.', 3)
+            raise PureError('Unknown resource; choose ' + ', '.join(RESOURCES) + '.', 3)
         tag, _, _ = RESOURCES[resource]
         return import_module(f'.sdk.api.{tag}.{tag}_{action}', package='pure_client')
 
@@ -122,21 +125,35 @@ class PureClient:
         except Exception:
             raise PureError('API returned malformed JSON or an invalid response.', 6) from None
 
-    def get(self, resource: str, uuid: str | UUID):
-        operation = self._operation(resource, 'get')
+    @staticmethod
+    def _uuid(uuid: str | UUID):
         try:
             identifier = UUID(str(uuid))
         except (ValueError, TypeError, AttributeError):
             raise PureError('Identifier must be a valid UUID.', 3) from None
-        return self._data(operation, RESOURCES[resource][2], uuid=identifier)
+        return identifier
+
+    def get(self, resource: str, uuid: str | UUID):
+        operation = self._operation(resource, 'get')
+        return self._data(operation, RESOURCES[resource][2], uuid=self._uuid(uuid))
+
+    def person_fingerprints(self, uuid: str | UUID):
+        """Read a person's fingerprints; this operation has no pagination parameters."""
+        operation = import_module('.sdk.api.person.person_get_fingerprints', package='pure_client')
+        return self._data(operation, 'FingerprintListResult', uuid=self._uuid(uuid))
 
     def list(self, resource: str, *, size=10, offset=0, order=None, all_pages=False):
         operation = self._operation(resource, 'list')
         self._paging(size, offset, list_request=True)
+        if order is not None and resource not in ORDERED_RESOURCES:
+            raise PureError(f'{resource} list does not define an order parameter.', 3)
         if order is not None and not isinstance(order, str):
             raise PureError('Order must be a string from the resource orderings operation.', 3)
         def page(current):
-            return self._data(operation, RESOURCES[resource][2] + 'ListResult', size=size, offset=current, order=order if order is not None else UNSET)
+            params = {'size': size, 'offset': current}
+            if resource in ORDERED_RESOURCES:
+                params['order'] = order if order is not None else UNSET
+            return self._data(operation, RESOURCES[resource][2] + 'ListResult', **params)
         return self._pages(page, offset) if all_pages else page(offset)
 
     def search(self, resource: str, body: dict, *, size=None, offset=None, all_pages=False):
